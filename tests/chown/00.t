@@ -156,7 +156,7 @@ expect 0 chmod ${n0} 06555
 expect 06555 lstat ${n0} mode
 expect 0 -u 65534 -g 65533,65532 chown ${n0} 65534 65532
 case "${os}:${fs}" in
-Linux:ext3|Linux:ntfs-3g)
+Linux:ext3|Linux:ntfs-3g|Linux:ZFS)
 	expect 06555,65534,65532 lstat ${n0} mode,uid,gid
         ;;
 *)
@@ -167,7 +167,7 @@ expect 0 chmod ${n0} 06555
 expect 06555 lstat ${n0} mode
 expect 0 -u 65534 -g 65533,65532 -- chown ${n0} -1 65533
 case "${os}:${fs}" in
-Linux:ext3|Linux:ntfs-3g)
+Linux:ext3|Linux:ntfs-3g|Linux:ZFS)
 	expect 06555,65534,65533 lstat ${n0} mode,uid,gid
         ;;
 *)
@@ -283,7 +283,7 @@ sleep 1
 expect 0 -- chown ${n0} -1 -1
 ctime2=`${fstest} stat ${n0} ctime`
 case "${os}:${fs}" in
-Linux:ext3)
+Linux:ext3|Linux:ZFS)
 	test_check $ctime1 -lt $ctime2
         ;;
 *)
@@ -298,7 +298,7 @@ sleep 1
 expect 0 -- chown ${n0} -1 -1
 ctime2=`${fstest} stat ${n0} ctime`
 case "${os}:${fs}" in
-Linux:ext3)
+Linux:ext3|Linux:ZFS)
 	test_check $ctime1 -lt $ctime2
         ;;
 *)
@@ -313,7 +313,7 @@ sleep 1
 expect 0 -- chown ${n0} -1 -1
 ctime2=`${fstest} stat ${n0} ctime`
 case "${os}:${fs}" in
-Linux:ext3)
+Linux:ext3|Linux:ZFS)
 	test_check $ctime1 -lt $ctime2
         ;;
 *)
@@ -328,7 +328,7 @@ sleep 1
 expect 0 -- lchown ${n0} -1 -1
 ctime2=`${fstest} lstat ${n0} ctime`
 case "${os}:${fs}" in
-Linux:ext3)
+Linux:ext3|Linux:ZFS)
 	test_check $ctime1 -lt $ctime2
         ;;
 *)
