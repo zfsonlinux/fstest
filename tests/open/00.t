@@ -28,13 +28,13 @@ expect 0 open ${n0} O_CREAT,O_WRONLY 0151
 expect regular,0151 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 077 open ${n0} O_CREAT,O_WRONLY 0151
-expect regular,0100 lstat ${n0} type,mode
+expect regular,0151 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 070 open ${n0} O_CREAT,O_WRONLY 0345
-expect regular,0305 lstat ${n0} type,mode
+expect regular,0345 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 0501 open ${n0} O_CREAT,O_WRONLY 0345
-expect regular,0244 lstat ${n0} type,mode
+expect regular,0345 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 
 # POSIX: (If O_CREAT is specified and the file doesn't exist) [...] the user ID
