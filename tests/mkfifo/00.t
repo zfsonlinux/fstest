@@ -25,13 +25,13 @@ expect 0 mkfifo ${n0} 0151
 expect fifo,0151 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 077 mkfifo ${n0} 0151
-expect fifo,0100 lstat ${n0} type,mode
+expect fifo,0151 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 070 mkfifo ${n0} 0345
-expect fifo,0305 lstat ${n0} type,mode
+expect fifo,0345 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 expect 0 -U 0501 mkfifo ${n0} 0345
-expect fifo,0244 lstat ${n0} type,mode
+expect fifo,0345 lstat ${n0} type,mode
 expect 0 unlink ${n0}
 
 # POSIX: The FIFO's user ID shall be set to the process' effective user ID.
